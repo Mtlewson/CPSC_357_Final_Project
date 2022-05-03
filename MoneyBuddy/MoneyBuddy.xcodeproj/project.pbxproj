@@ -14,6 +14,11 @@
 		4DA9F22E282195ED00F41F27 /* MoneyBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA9F22D282195ED00F41F27 /* MoneyBuddyTests.swift */; };
 		4DA9F238282195ED00F41F27 /* MoneyBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA9F237282195ED00F41F27 /* MoneyBuddyUITests.swift */; };
 		4DA9F23A282195ED00F41F27 /* MoneyBuddyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA9F239282195ED00F41F27 /* MoneyBuddyUITestsLaunchTests.swift */; };
+		552AB49828219884007B6531 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552AB49728219884007B6531 /* MonthView.swift */; };
+		552AB49A2821989E007B6531 /* ExpendituresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552AB4992821989E007B6531 /* ExpendituresView.swift */; };
+		552AB49C282198AE007B6531 /* NewExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552AB49B282198AE007B6531 /* NewExpenseView.swift */; };
+		552AB49E282198C0007B6531 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552AB49D282198C0007B6531 /* ModelData.swift */; };
+		552AB4A02821A820007B6531 /* wtf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552AB49F2821A820007B6531 /* wtf.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,11 @@
 		4DA9F233282195ED00F41F27 /* MoneyBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DA9F237282195ED00F41F27 /* MoneyBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyBuddyUITests.swift; sourceTree = "<group>"; };
 		4DA9F239282195ED00F41F27 /* MoneyBuddyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyBuddyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		552AB49728219884007B6531 /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
+		552AB4992821989E007B6531 /* ExpendituresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpendituresView.swift; sourceTree = "<group>"; };
+		552AB49B282198AE007B6531 /* NewExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExpenseView.swift; sourceTree = "<group>"; };
+		552AB49D282198C0007B6531 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		552AB49F2821A820007B6531 /* wtf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wtf.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +84,7 @@
 		4DA9F210282195EA00F41F27 = {
 			isa = PBXGroup;
 			children = (
+				552AB49F2821A820007B6531 /* wtf.swift */,
 				4DA9F21B282195EA00F41F27 /* MoneyBuddy */,
 				4DA9F22C282195ED00F41F27 /* MoneyBuddyTests */,
 				4DA9F236282195ED00F41F27 /* MoneyBuddyUITests */,
@@ -96,6 +107,10 @@
 			children = (
 				4DA9F21C282195EA00F41F27 /* MoneyBuddyApp.swift */,
 				4DA9F21E282195EA00F41F27 /* ContentView.swift */,
+				552AB49728219884007B6531 /* MonthView.swift */,
+				552AB4992821989E007B6531 /* ExpendituresView.swift */,
+				552AB49B282198AE007B6531 /* NewExpenseView.swift */,
+				552AB49D282198C0007B6531 /* ModelData.swift */,
 				4DA9F220282195ED00F41F27 /* Assets.xcassets */,
 				4DA9F222282195ED00F41F27 /* Preview Content */,
 			);
@@ -257,8 +272,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				552AB49A2821989E007B6531 /* ExpendituresView.swift in Sources */,
 				4DA9F21F282195EA00F41F27 /* ContentView.swift in Sources */,
+				552AB49828219884007B6531 /* MonthView.swift in Sources */,
+				552AB49C282198AE007B6531 /* NewExpenseView.swift in Sources */,
+				552AB4A02821A820007B6531 /* wtf.swift in Sources */,
 				4DA9F21D282195EA00F41F27 /* MoneyBuddyApp.swift in Sources */,
+				552AB49E282198C0007B6531 /* ModelData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,7 +439,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MoneyBuddy/Preview Content\"";
-				DEVELOPMENT_TEAM = 25SPL29WYG;
+				DEVELOPMENT_TEAM = F7HB3BXUKP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -432,7 +452,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ML.MoneyBuddy;
+				PRODUCT_BUNDLE_IDENTIFIER = Liam.MoneyBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -448,7 +468,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MoneyBuddy/Preview Content\"";
-				DEVELOPMENT_TEAM = 25SPL29WYG;
+				DEVELOPMENT_TEAM = F7HB3BXUKP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -461,7 +481,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ML.MoneyBuddy;
+				PRODUCT_BUNDLE_IDENTIFIER = Liam.MoneyBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
