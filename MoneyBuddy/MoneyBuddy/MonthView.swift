@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MonthView: View {
+//    @StateObject private var recipeStore : RecipeStore = RecipeStore(recipes : recipeData)
+//    @StateObject var recipeStore : RecipeStore
     var month: Month
     
     var body: some View {
@@ -24,11 +26,22 @@ struct MonthView: View {
                     Text("This is a button to add expenditure")
                     
                     // we want a button that goes to add expoeniture page
-                        .navigationBarTitle(month.name)
-                        .padding()
-                }
+                        
+                    
+
+                    
+                }.navigationBarTitle(month.name)
+                    .navigationBarItems(leading: NavigationLink(destination: NewExpenseView()){
+                        
+                        //expenditureList : month.Expenditures)
+                        
+                        //NavigationLink(destination: AddNewRecipe(recipeStore: self.recipeStore))
+                        Text("Add")
+                            .foregroundColor(.blue)
+                            .foregroundColor(.red)
+                    }, trailing: EditButton())
                 
-            }
+            } // end of nav view
             
         }
     }

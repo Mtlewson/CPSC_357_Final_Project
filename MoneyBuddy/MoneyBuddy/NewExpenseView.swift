@@ -9,6 +9,8 @@ import SwiftUI
 
 struct NewExpenseView: View {
     
+//    @StateObject var expenditures : Expenditure
+    
     @State private var expenseName: String = ""
     @State private var expenseType: String = ""
     @State private var expenseDescription: String = ""
