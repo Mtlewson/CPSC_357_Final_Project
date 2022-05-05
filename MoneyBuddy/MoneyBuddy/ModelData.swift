@@ -46,7 +46,8 @@ struct Month{
 
 class MonthData: ObservableObject {
  @Published var months: [Month] = [Month(name: "January 2022",
-                    expenditures: [Expenditure(name: "Coffee", desc: "coffe descrip", cost: 4.00)]),        Month(name: "February 2022",
+                    expenditures: [Expenditure(name: "Coffee", desc: "coffe descrip", cost: 4.00)]),
+                                   Month(name: "February 2022",
                     expenditures: [Expenditure(name: "Bread", desc: "bread descrip", cost: 124.00)])
                     ]
 }

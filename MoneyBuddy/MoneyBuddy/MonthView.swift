@@ -10,7 +10,7 @@ import SwiftUI
 struct MonthView: View {
 //    @StateObject private var recipeStore : RecipeStore = RecipeStore(recipes : recipeData)
 //    @StateObject var recipeStore : RecipeStore
-    var month: Month
+    @EnvironmentObject var Monthdata: MonthData
     
     var body: some View {
         VStack{
@@ -30,8 +30,8 @@ struct MonthView: View {
                     
 
                     
-                }.navigationBarTitle(month.name)
-                    .navigationBarItems(leading: NavigationLink(destination: NewExpenseView()){
+                }.navigationBarTitle(Text("January"))
+                    .navigationBarItems(leading: NavigationLink(destination: NewExpenseView().environmentObject(Monthdata)){
                         
                         //expenditureList : month.Expenditures)
                         
@@ -39,7 +39,7 @@ struct MonthView: View {
                         Text("Add")
                             .foregroundColor(.blue)
                             .foregroundColor(.red)
-                    }, trailing: EditButton())
+                    })
                 
             } // end of nav view
             
@@ -49,7 +49,7 @@ struct MonthView: View {
 
 struct MonthView_Previews: PreviewProvider {
     static var previews: some View {
-        MonthView(month: MonthData().months[0])
+        MonthView()
     }
 }
                         

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewExpenseView: View {
     
-//    @StateObject var expenditures : Expenditure
+    @EnvironmentObject var Monthdata : MonthData
     
     @State private var expenseName: String = ""
     @State private var expenseType: String = ""
@@ -28,6 +28,9 @@ struct NewExpenseView: View {
             Button(action: CreateNewExpense){
                 Text("Add Expense")
             }
+            Button(action: Shownew){
+                Text("Show All")
+            }
         }
     }
     func CreateNewExpense(){
@@ -37,12 +40,19 @@ struct NewExpenseView: View {
                 name: expenseName,
                 desc: expenseDescription,
                 cost: floatCost )
+            Monthdata.months[0].expenditures.append(newExpense)
 //            recipeStore.recipes.append(newRecipe)
             //TO DO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             // Add new expense to CURRENT month
 
         } // Else not add
 //
+    }
+    
+    func Shownew(){
+        for number in 0..<Monthdata.months[0].expenditures.count{
+            print(Monthdata.months[0].expenditures[number].name)
+        }
     }
 }
 

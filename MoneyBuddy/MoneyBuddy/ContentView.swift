@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        MonthView(month: MonthData().months[0])
+        MonthView().environmentObject(MonthData())
     }
 }
 
