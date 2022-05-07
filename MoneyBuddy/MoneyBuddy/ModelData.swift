@@ -11,12 +11,14 @@ import SwiftUI
 struct Expenditure: Identifiable{
     var id: Int
     var name: String
-    var description: String
+    var type: String
+    var desc: String
     var cost: Float
     
-    init(name: String, desc: String, cost: Float ){
+    init(name: String, type: String, desc: String, cost: Float ){
         self.name = name
-        self.description = desc
+        self.type = type
+        self.desc = desc
         self.cost = cost
         
         self.id = Int.random(in: 1...1000)
@@ -46,9 +48,9 @@ struct Month{
 
 class MonthData: ObservableObject {
  @Published var months: [Month] = [Month(name: "January 2022",
-                    expenditures: [Expenditure(name: "Coffee", desc: "coffe descrip", cost: 4.00)]),
+                                         expenditures: [Expenditure(name: "Coffee", type: "food", desc: "coffe descrip", cost: 4.00)]),
                                    Month(name: "February 2022",
-                    expenditures: [Expenditure(name: "Bread", desc: "bread descrip", cost: 124.00)])
+                                         expenditures: [Expenditure(name: "Bread", type: "groceries", desc: "bread descrip", cost: 124.00)])
                     ]
 }
 

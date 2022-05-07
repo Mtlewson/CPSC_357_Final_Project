@@ -19,6 +19,8 @@
 		552AB49C282198AE007B6531 /* NewExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552AB49B282198AE007B6531 /* NewExpenseView.swift */; };
 		552AB49E282198C0007B6531 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552AB49D282198C0007B6531 /* ModelData.swift */; };
 		552AB4A02821A820007B6531 /* wtf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552AB49F2821A820007B6531 /* wtf.swift */; };
+		6C31B2D72827074C003F2AAD /* ExpenditureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C31B2D62827074C003F2AAD /* ExpenditureView.swift */; };
+		6C31B2D9282717BA003F2AAD /* ExpenditureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C31B2D8282717BA003F2AAD /* ExpenditureListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		552AB49B282198AE007B6531 /* NewExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExpenseView.swift; sourceTree = "<group>"; };
 		552AB49D282198C0007B6531 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		552AB49F2821A820007B6531 /* wtf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wtf.swift; sourceTree = "<group>"; };
+		6C31B2D62827074C003F2AAD /* ExpenditureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenditureView.swift; sourceTree = "<group>"; };
+		6C31B2D8282717BA003F2AAD /* ExpenditureListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenditureListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,8 @@
 		4DA9F21B282195EA00F41F27 /* MoneyBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				6C31B2D62827074C003F2AAD /* ExpenditureView.swift */,
+				6C31B2D8282717BA003F2AAD /* ExpenditureListView.swift */,
 				4DA9F21C282195EA00F41F27 /* MoneyBuddyApp.swift */,
 				4DA9F21E282195EA00F41F27 /* ContentView.swift */,
 				552AB49728219884007B6531 /* MonthView.swift */,
@@ -272,10 +278,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C31B2D72827074C003F2AAD /* ExpenditureView.swift in Sources */,
 				552AB49A2821989E007B6531 /* ExpendituresView.swift in Sources */,
 				4DA9F21F282195EA00F41F27 /* ContentView.swift in Sources */,
 				552AB49828219884007B6531 /* MonthView.swift in Sources */,
 				552AB49C282198AE007B6531 /* NewExpenseView.swift in Sources */,
+				6C31B2D9282717BA003F2AAD /* ExpenditureListView.swift in Sources */,
 				552AB4A02821A820007B6531 /* wtf.swift in Sources */,
 				4DA9F21D282195EA00F41F27 /* MoneyBuddyApp.swift in Sources */,
 				552AB49E282198C0007B6531 /* ModelData.swift in Sources */,

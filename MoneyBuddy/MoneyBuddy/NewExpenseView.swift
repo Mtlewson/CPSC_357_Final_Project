@@ -38,6 +38,7 @@ struct NewExpenseView: View {
             let newExpense = Expenditure(
     //            id: UUID().uuidString,
                 name: expenseName,
+                type: expenseType,
                 desc: expenseDescription,
                 cost: floatCost )
             Monthdata.months[0].expenditures.append(newExpense)
