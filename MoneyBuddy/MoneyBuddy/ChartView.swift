@@ -24,22 +24,22 @@ struct Home : View {
         VStack{
             ZStack {
                 HStack{
-                    Button(action: {
-                        
-                    }){
-                        Image(systemName: "line.horizontal.3")
-                            .resizable()
-                            .frame(width: 20, height: 15)
-                            .foregroundColor(.black)
-                    }
-                    Spacer()
+//                    Button(action: {
+//
+//                    }){
+////                        Image(systemName: "line.horizontal.3")
+////                            .resizable()
+////                            .frame(width: 20, height: 15)
+////                            .foregroundColor(.black)
+////                    }
+////                    Spacer()
                     
-                    Button(action: {
-                        
-                    }){
-                        Image(systemName: "bell.fill")
-                            .foregroundColor(.black)
-                    }
+//                    Button(action: {
+//
+//                    }){
+//                        Image(systemName: "bell.fill")
+//                            .foregroundColor(.black)
+//                    }
                 } // end of hstack
                 Text("My Budget Breakdown")
                     .fontWeight(.bold)
@@ -82,7 +82,7 @@ struct Home : View {
                 }
             }
             .padding()
-            Spacer()
+//            Spacer()
         }
         .edgesIgnoringSafeArea(.top)
         
@@ -145,9 +145,9 @@ struct Pie : Identifiable {
 // Used to populate the chart / line metrics on bottom
 var data = [
 //    Pie(id : 0, percent 10, name: "name1", color: Color("Color1"))
-    Pie(id: 0, percent: 20.0, name: "Food", color: Color.green),
-    Pie(id: 1, percent: 20.0, name: "Travel", color: Color.blue),
-    Pie(id: 2, percent: 30.0, name: "Fun", color: Color.yellow),
+    Pie(id: 0, percent: 20.0, name: "Food", color: Color("Color2")),
+    Pie(id: 1, percent: 20.0, name: "Personal", color: Color("Color5")),
+    Pie(id: 2, percent: 30.0, name: "Other", color: Color("Color4")),
     Pie(id: 3, percent: 30.0, name: "Yeet", color: Color.red)
 ]
 

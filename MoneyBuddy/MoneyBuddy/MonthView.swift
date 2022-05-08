@@ -19,7 +19,8 @@ struct MonthView: View {
                 VStack{
                     
                     Spacer()
-                    Image(systemName: "house.fill") //this will be a chart
+//                    Image(systemName: "house.fill") //this will be a chart
+                    ChartView()//.environmentObject(MonthData())
                     
                     Spacer()
                     
