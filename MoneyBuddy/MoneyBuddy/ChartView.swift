@@ -41,7 +41,7 @@ struct Home : View {
                             .foregroundColor(.black)
                     }
                 } // end of hstack
-                Text("My Usage")
+                Text("My Budget Breakdown")
                     .fontWeight(.bold)
             }// end of zstack
             .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
@@ -142,13 +142,12 @@ struct Pie : Identifiable {
     var color : Color
 }
 
+// Used to populate the chart / line metrics on bottom
 var data = [
 //    Pie(id : 0, percent 10, name: "name1", color: Color("Color1"))
     Pie(id: 0, percent: 20.0, name: "Food", color: Color.green),
     Pie(id: 1, percent: 20.0, name: "Travel", color: Color.blue),
     Pie(id: 2, percent: 30.0, name: "Fun", color: Color.yellow),
     Pie(id: 3, percent: 30.0, name: "Yeet", color: Color.red)
-
-
 ]
 
