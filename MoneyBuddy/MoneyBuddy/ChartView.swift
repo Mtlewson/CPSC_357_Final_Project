@@ -7,19 +7,78 @@
 
 import SwiftUI
 
-struct ChartView: View {
-    var body: some View {
-        Home()
-    }
-}
 
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
-        ChartView()
+        ChartView(month: MonthData().months[0])
     }
 }
 
-struct Home : View {
+struct ChartView : View {
+    var month: Month
+    
+    
+    
+    var foodCalc: Float {
+        var total: Float = 0.0
+        for expen in month.expenditures{
+            if expen.type == "food" {
+                total += expen.cost
+            }
+        }
+        return total
+    }
+    var personalCalc: Float {
+        var total: Float = 0.0
+        for expen in month.expenditures{
+            if expen.type == "personal" {
+                total += expen.cost
+            }
+        }
+        return total
+    }
+    var utilCalc: Float {
+        var total: Float = 0.0
+        for expen in month.expenditures{
+            if expen.type == "utilities" {
+                total += expen.cost
+            }
+        }
+        return total
+    }
+    var otherCalc: Float {
+        var total: Float = 0.0
+        for expen in month.expenditures{
+            if expen.type == "other" {
+                total += expen.cost
+            }
+        }
+        return total
+    }
+    var total: Float {
+        var total: Float = 0.0
+        for expen in month.expenditures{
+            total += expen.cost
+
+        }
+        return total
+    }
+    
+    var data: [Pie] {
+        var temp: [Pie] = [
+                Pie(id: 0, percent: CGFloat(foodCalc/total * 100), name: "Food", color: Color("Color2")),
+                Pie(id: 1, percent: CGFloat(personalCalc/total * 100), name: "Personal", color: Color("Color5")),
+                Pie(id: 2, percent: CGFloat(utilCalc/total * 100), name: "Utilities", color: Color("Color4")),
+                Pie(id: 3, percent: CGFloat(otherCalc/total * 100), name: "Other", color: Color.red)
+            ]
+        return temp
+    }
+    
+    
+    
+    
+    //Iterate over month expenditure list grabbing cost per category and month Total
+    // Create array of the categories above putting in the values of foodTotal/total total to get the percentage * 100 as the percentage value of the array
     var body: some View {
         VStack{
             ZStack {
@@ -50,7 +109,7 @@ struct Home : View {
             GeometryReader{g in
                 ZStack{
                     ForEach(0..<data.count){i in
-                        DrawShape(center: CGPoint(x: g.frame(in: .global).width / 2,
+                        DrawShape(data: data, center: CGPoint(x: g.frame(in: .global).width / 2,
                                                   y: g.frame(in: .global).height/2), index: i)
                     }
                 }
@@ -94,6 +153,7 @@ struct Home : View {
 }
 // Creates pi chart
 struct DrawShape : View {
+    var data: [Pie]
     var center: CGPoint
     var index: Int
     var body: some View {
@@ -134,20 +194,13 @@ struct DrawShape : View {
 }
 
 // sample data
-struct Pie : Identifiable {
-    
-    var id : Int
-    var percent : CGFloat
-    var name: String
-    var color : Color
-}
+
 
 // Used to populate the chart / line metrics on bottom
-var data = [
-//    Pie(id : 0, percent 10, name: "name1", color: Color("Color1"))
-    Pie(id: 0, percent: 20.0, name: "Food", color: Color("Color2")),
-    Pie(id: 1, percent: 20.0, name: "Personal", color: Color("Color5")),
-    Pie(id: 2, percent: 30.0, name: "Other", color: Color("Color4")),
-    Pie(id: 3, percent: 30.0, name: "Yeet", color: Color.red)
-]
+
+
+// TODO:   COULD BE DIVIDING BY ZERO, CHECK THAT SHIT.
+
+
+
 

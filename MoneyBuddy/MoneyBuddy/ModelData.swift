@@ -46,6 +46,15 @@ struct Month{
 }
 
 
+struct Pie : Identifiable {
+    
+    var id : Int
+    var percent : CGFloat
+    var name: String
+    var color : Color
+}
+
+
 class MonthData: ObservableObject {
  @Published var months: [Month] = [Month(name: "January 2022",
                                          expenditures: [Expenditure(name: "Coffee", type: "food", desc: "coffe descrip", cost: 4.00)]),
