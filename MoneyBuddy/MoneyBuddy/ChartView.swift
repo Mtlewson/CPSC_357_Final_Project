@@ -64,6 +64,8 @@ struct ChartView : View {
         return total
     }
     
+    var placeHolder = [Pie(id: 0, percent: CGFloat(100), name: "Food", color: Color("Color2"), total: 100)]
+    
     var data: [Pie] {
         var temp: [Pie] = [
             Pie(id: 0, percent: CGFloat(foodCalc/total * 100), name: "Food", color: Color("Color2"), total: foodCalc),
@@ -106,45 +108,69 @@ struct ChartView : View {
             .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
             .padding()
             .overlay(Rectangle().stroke(Color.black.opacity(0.05), lineWidth: 2))
-            GeometryReader{g in
-                ZStack{
-                    ForEach(0..<data.count){i in
-                        DrawShape(data: data, center: CGPoint(x: g.frame(in: .global).width / 2,
-                                                  y: g.frame(in: .global).height/2), index: i)
-                    }
-                }
-            }
-            .frame(height: 360)
-            .padding(.top, 20)
-            .clipShape(Circle())
-            .shadow(radius: 8)
             
-            VStack {
-                ForEach(data){i in
-                    HStack{
-                        
-                        Text(i.name)
-                            .frame(width: 100)
-                        Text(("$ "+String(i.total)))
-                        GeometryReader{g in
-                            HStack{
-                                Spacer(minLength: 0)
-                                Text(String(format: "%.0f", i.percent)+" %")
-                                    .fontWeight(.bold)
-                                    .padding(.leading, 10)
-                               
-                                Rectangle()
-                                    .fill(i.color)
-//                                    .frame(width: 60, height: 10)
-                                    .frame(width: self.getWidth(width: g.frame(in: .global).width, value: i.percent/2), height: 10)
-//                                Text(String(format: "\(i.percent)", "%.0f"))
-//                                    .fontWeight(.bold)
-//                                    .padding(.leading, 10)
-                            }
+            if total > 0 {
+                GeometryReader{g in
+                    ZStack{
+                        ForEach(0..<data.count){i in
+                            DrawShape(data: data, center: CGPoint(x: g.frame(in: .global).width / 2,
+                                                      y: g.frame(in: .global).height/2), index: i)
                         }
                     }
-                    .padding(.top, 18)
                 }
+                .frame(height: 360)
+                .padding(.top, 20)
+                .clipShape(Circle())
+            .shadow(radius: 8)
+            }
+            else {
+                GeometryReader{g in
+                    ZStack{
+                        ForEach(0..<placeHolder.count){i in
+                            DrawShape(data: placeHolder, center: CGPoint(x: g.frame(in: .global).width / 2,
+                                                      y: g.frame(in: .global).height/2), index: i)
+                        }
+                    }
+                }
+                .frame(height: 360)
+                .padding(.top, 20)
+                .clipShape(Circle())
+            .shadow(radius: 8)
+            }
+            
+            
+            VStack {
+                if total > 0 {
+                    ForEach(data){i in
+                        HStack{
+                            
+                            Text(i.name)
+                                .frame(width: 100)
+                            Text(("$ "+String(i.total)))
+                            GeometryReader{g in
+                                HStack{
+                                    Spacer(minLength: 0)
+                                    Text(String(format: "%.0f", i.percent)+" %")
+                                        .fontWeight(.bold)
+                                        .padding(.leading, 10)
+                                   
+                                    Rectangle()
+                                        .fill(i.color)
+    //                                    .frame(width: 60, height: 10)
+                                        .frame(width: self.getWidth(width: g.frame(in: .global).width, value: i.percent/2), height: 10)
+    //                                Text(String(format: "\(i.percent)", "%.0f"))
+    //                                    .fontWeight(.bold)
+    //                                    .padding(.leading, 10)
+                                }
+                            }
+                        }
+                        .padding(.top, 18)
+                    }
+                }
+                else {
+                    Text("Please enter an expenditure")
+                }
+                
             }
             .padding()
 //            Spacer()

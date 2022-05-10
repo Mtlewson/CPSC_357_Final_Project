@@ -20,6 +20,7 @@ struct MonthView: View {
                     
                     Spacer()
 //                    Image(systemName: "house.fill") //this will be a chart
+
                     ChartView(month: MonthData().months[0])//.environmentObject(MonthData())
                     
                     Spacer()
