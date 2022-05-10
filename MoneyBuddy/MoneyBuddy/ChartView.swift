@@ -1,12 +1,4 @@
-//
-//  ChartView.swift
-//  MoneyBuddy
-//
-//  Created by Michael Lewson on 5/7/22.
-//
-
 import SwiftUI
-
 
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
@@ -16,9 +8,7 @@ struct ChartView_Previews: PreviewProvider {
 
 struct ChartView : View {
     var month: Month
-    
-    
-    
+    // Totals for each expenditure in each month
     var foodCalc: Float {
         var total: Float = 0.0
         for expen in month.expenditures{
@@ -55,6 +45,7 @@ struct ChartView : View {
         }
         return total
     }
+    //
     var total: Float {
         var total: Float = 0.0
         for expen in month.expenditures{
@@ -63,9 +54,9 @@ struct ChartView : View {
         }
         return total
     }
-    
+    // Used for when there's no expenditures
     var placeHolder = [Pie(id: 0, percent: CGFloat(100), name: "Food", color: Color("Color2"), total: 100)]
-    
+    // The chart data of expenditures
     var data: [Pie] {
         var temp: [Pie] = [
             Pie(id: 0, percent: CGFloat(foodCalc/total * 100), name: "Food", color: Color("Color2"), total: foodCalc),
@@ -76,40 +67,20 @@ struct ChartView : View {
         return temp
     }
     
-    
-    
-    
-    //Iterate over month expenditure list grabbing cost per category and month Total
-    // Create array of the categories above putting in the values of foodTotal/total total to get the percentage * 100 as the percentage value of the array
+
     var body: some View {
         VStack{
             ZStack {
                 HStack{
-//                    Button(action: {
-//
-//                    }){
-////                        Image(systemName: "line.horizontal.3")
-////                            .resizable()
-////                            .frame(width: 20, height: 15)
-////                            .foregroundColor(.black)
-////                    }
-////                    Spacer()
-                    
-//                    Button(action: {
-//
-//                    }){
-//                        Image(systemName: "bell.fill")
-//                            .foregroundColor(.black)
-//                    }
-                } // end of hstack
+                } 
                 Text("My Budget Breakdown")
                     .fontWeight(.bold)
-            }// end of zstack
+            }
             .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
             .padding()
             .overlay(Rectangle().stroke(Color.black.opacity(0.05), lineWidth: 2))
             
-            if total > 0 {
+            if total > 0 { // If there are expenditures make the chart
                 GeometryReader{g in
                     ZStack{
                         ForEach(0..<data.count){i in
@@ -123,7 +94,7 @@ struct ChartView : View {
                 .clipShape(Circle())
             .shadow(radius: 8)
             }
-            else {
+            else { // no expenditures, create a placeholder
                 GeometryReader{g in
                     ZStack{
                         ForEach(0..<placeHolder.count){i in
@@ -138,7 +109,8 @@ struct ChartView : View {
             .shadow(radius: 8)
             }
             
-            
+            // Prints out the information below the chart
+            // Name, total cost, percentage of monthly expenses
             VStack {
                 if total > 0 {
                     ForEach(data){i in
@@ -156,11 +128,7 @@ struct ChartView : View {
                                    
                                     Rectangle()
                                         .fill(i.color)
-    //                                    .frame(width: 60, height: 10)
                                         .frame(width: self.getWidth(width: g.frame(in: .global).width, value: i.percent/2), height: 10)
-    //                                Text(String(format: "\(i.percent)", "%.0f"))
-    //                                    .fontWeight(.bold)
-    //                                    .padding(.leading, 10)
                                 }
                             }
                         }
@@ -173,11 +141,11 @@ struct ChartView : View {
                 
             }
             .padding()
-//            Spacer()
         }
         .edgesIgnoringSafeArea(.top)
         
     }
+    // Returns width of pi chart
    func getWidth(width: CGFloat, value :  CGFloat)->CGFloat{
         let temp = value/100
         return temp * width
@@ -221,18 +189,4 @@ struct DrawShape : View {
         }
         return temp
     }
-    
-    
 }
-
-// sample data
-
-
-// Used to populate the chart / line metrics on bottom
-
-
-// TODO:   COULD BE DIVIDING BY ZERO, CHECK THAT .
-
-
-
-
