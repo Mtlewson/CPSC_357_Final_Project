@@ -14,7 +14,7 @@ struct AddExpenditureView: View {
     @EnvironmentObject var Monthdata : MonthData
     
     @State private var expenditureName: String = ""
-    @State private var expenditureType: String = "Food"
+    @State private var expenditureType: String = "food"
     @State private var expenditureDescription: String = ""
     @State private var expenditureCost: String = "0.0"
     
