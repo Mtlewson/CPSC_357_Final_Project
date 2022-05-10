@@ -71,8 +71,6 @@ struct ChartView : View {
     var body: some View {
         VStack{
             ZStack {
-                HStack{
-                } 
                 Text("My Budget Breakdown")
                     .fontWeight(.bold)
             }
