@@ -32,7 +32,7 @@ struct MonthView: View {
 
                     
                 }.navigationBarTitle(Text("January"))
-                    .navigationBarItems(leading: NavigationLink(destination: NewExpenseView().environmentObject(Monthdata)){
+                    .navigationBarItems(leading: NavigationLink(destination: AddExpenditureView().environmentObject(Monthdata)){
                         
                         //expenditureList : month.Expenditures)
                         
