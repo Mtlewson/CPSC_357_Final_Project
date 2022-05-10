@@ -52,12 +52,22 @@ struct Pie : Identifiable {
     var percent : CGFloat
     var name: String
     var color : Color
+    var total : Float
 }
 
 
 class MonthData: ObservableObject {
  @Published var months: [Month] = [Month(name: "January 2022",
-                                         expenditures: [Expenditure(name: "Coffee", type: "food", desc: "coffe descrip", cost: 4.00)]),
+                                         expenditures: [Expenditure(name: "Coffee", type: "food", desc: "coffe descrip", cost: 4.00),
+                                                        Expenditure(name: "Coffee", type: "food", desc: "coffe descrip", cost: 4.50),
+                                                        Expenditure(name: "Coffee", type: "utilities", desc: "coffe descrip", cost: 20.00),
+                                                        Expenditure(name: "Coffee", type: "personal", desc: "coffe descrip", cost: 30.00),
+                                                        Expenditure(name: "Coffee", type: "other", desc: "coffe descrip", cost: 10.00),
+                                                        Expenditure(name: "Coffee", type: "food", desc: "coffe descrip", cost: 1.00)
+                                                       
+                                                       
+                                                       
+                                                       ]),
                                    Month(name: "February 2022",
                                          expenditures: [Expenditure(name: "Bread", type: "groceries", desc: "bread descrip", cost: 124.00)])
                     ]

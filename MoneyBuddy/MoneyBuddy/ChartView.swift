@@ -66,10 +66,10 @@ struct ChartView : View {
     
     var data: [Pie] {
         var temp: [Pie] = [
-                Pie(id: 0, percent: CGFloat(foodCalc/total * 100), name: "Food", color: Color("Color2")),
-                Pie(id: 1, percent: CGFloat(personalCalc/total * 100), name: "Personal", color: Color("Color5")),
-                Pie(id: 2, percent: CGFloat(utilCalc/total * 100), name: "Utilities", color: Color("Color4")),
-                Pie(id: 3, percent: CGFloat(otherCalc/total * 100), name: "Other", color: Color.red)
+            Pie(id: 0, percent: CGFloat(foodCalc/total * 100), name: "Food", color: Color("Color2"), total: foodCalc),
+                Pie(id: 1, percent: CGFloat(personalCalc/total * 100), name: "Personal", color: Color("Color5"), total: personalCalc),
+                Pie(id: 2, percent: CGFloat(utilCalc/total * 100), name: "Utilities", color: Color("Color4"), total: utilCalc),
+                Pie(id: 3, percent: CGFloat(otherCalc/total * 100), name: "Other", color: Color.red, total: otherCalc)
             ]
         return temp
     }
@@ -125,15 +125,21 @@ struct ChartView : View {
                         
                         Text(i.name)
                             .frame(width: 100)
+                        Text(("$ "+String(i.total)))
                         GeometryReader{g in
                             HStack{
                                 Spacer(minLength: 0)
-                                Rectangle()
-                                    .fill(i.color)
-                                    .frame(width: self.getWidth(width: g.frame(in: .global).width, value: i.percent), height: 10)
-                                Text(String(format: "\(i.percent)", "%.0f"))
+                                Text(String(format: "%.0f", i.percent)+" %")
                                     .fontWeight(.bold)
                                     .padding(.leading, 10)
+                               
+                                Rectangle()
+                                    .fill(i.color)
+//                                    .frame(width: 60, height: 10)
+                                    .frame(width: self.getWidth(width: g.frame(in: .global).width, value: i.percent/2), height: 10)
+//                                Text(String(format: "\(i.percent)", "%.0f"))
+//                                    .fontWeight(.bold)
+//                                    .padding(.leading, 10)
                             }
                         }
                     }
@@ -199,7 +205,7 @@ struct DrawShape : View {
 // Used to populate the chart / line metrics on bottom
 
 
-// TODO:   COULD BE DIVIDING BY ZERO, CHECK THAT SHIT.
+// TODO:   COULD BE DIVIDING BY ZERO, CHECK THAT .
 
 
 
