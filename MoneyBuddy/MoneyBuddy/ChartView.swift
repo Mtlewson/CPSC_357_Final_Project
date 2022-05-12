@@ -61,8 +61,8 @@ struct ChartView : View {
         var temp: [Pie] = [
             Pie(id: 0, percent: CGFloat(foodCalc/total * 100), name: "Food", color: Color("Color2"), total: foodCalc),
                 Pie(id: 1, percent: CGFloat(personalCalc/total * 100), name: "Personal", color: Color("Color5"), total: personalCalc),
-                Pie(id: 2, percent: CGFloat(utilCalc/total * 100), name: "Utilities", color: Color("Color4"), total: utilCalc),
-                Pie(id: 3, percent: CGFloat(otherCalc/total * 100), name: "Other", color: Color.red, total: otherCalc)
+                Pie(id: 2, percent: CGFloat(utilCalc/total * 100), name: "Utilities", color: Color("ColorBlue"), total: utilCalc),
+                Pie(id: 3, percent: CGFloat(otherCalc/total * 100), name: "Other", color: Color("ColorPurple"), total: otherCalc)
             ]
         return temp
     }
@@ -74,8 +74,8 @@ struct ChartView : View {
                 Text("My Budget Breakdown")
                     .fontWeight(.bold)
             }
-            .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
-            .padding()
+//            .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
+//            .padding()
             .overlay(Rectangle().stroke(Color.black.opacity(0.05), lineWidth: 2))
             
             if total > 0 { // If there are expenditures make the chart
@@ -85,12 +85,19 @@ struct ChartView : View {
                             DrawShape(data: data, center: CGPoint(x: g.frame(in: .global).width / 2,
                                                       y: g.frame(in: .global).height/2), index: i)
                         }
+                        Circle()
+                            .frame(width:150, height: 150)
+                            .foregroundColor(Color.white)
+                            .shadow(radius: 25)
+//                            .shadow(radius: 50)
+                        Text(String(format: "$ %.2f", total))
+                            .font(.headline)
                     }
                 }
                 .frame(height: 360)
                 .padding(.top, 20)
                 .clipShape(Circle())
-            .shadow(radius: 8)
+            .shadow(radius: 20)
             }
             else { // no expenditures, create a placeholder
                 GeometryReader{g in
@@ -116,7 +123,7 @@ struct ChartView : View {
                             
                             Text(i.name)
                                 .frame(width: 100)
-                            Text(("$ "+String(i.total)))
+                            Text(("$ "+String(format: "%.2f", i.total)))
                             GeometryReader{g in
                                 HStack{
                                     Spacer(minLength: 0)
@@ -130,7 +137,7 @@ struct ChartView : View {
                                 }
                             }
                         }
-                        .padding(.top, 18)
+//                        .padding(.top, 18)
                     }
                 }
                 else {
