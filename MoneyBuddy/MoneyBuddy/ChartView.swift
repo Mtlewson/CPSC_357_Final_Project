@@ -2,74 +2,77 @@ import SwiftUI
 
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
-        ChartView(month: MonthData().months[0])
+        ChartView().environmentObject(MonthData())
     }
 }
 
 struct ChartView : View {
-    var month: Month
+    @EnvironmentObject var Monthdata: MonthData
     // Totals for each expenditure in each month
-    var foodCalc: Float {
-        var total: Float = 0.0
-        for expen in month.expenditures{
-            if expen.type == "food" {
-                total += expen.cost
-            }
-        }
-        return total
-    }
-    var personalCalc: Float {
-        var total: Float = 0.0
-        for expen in month.expenditures{
-            if expen.type == "personal" {
-                total += expen.cost
-            }
-        }
-        return total
-    }
-    var utilCalc: Float {
-        var total: Float = 0.0
-        for expen in month.expenditures{
-            if expen.type == "utilities" {
-                total += expen.cost
-            }
-        }
-        return total
-    }
-    var otherCalc: Float {
-        var total: Float = 0.0
-        for expen in month.expenditures{
-            if expen.type == "other" {
-                total += expen.cost
-            }
-        }
-        return total
-    }
-    //
-    var total: Float {
-        var total: Float = 0.0
-        for expen in month.expenditures{
-            total += expen.cost
-
-        }
-        return total
-    }
+    
     // Used for when there's no expenditures
     var placeHolder = [Pie(id: 0, percent: CGFloat(100), name: "Food", color: Color("Color2"), total: 100)]
     // The chart data of expenditures
-    var data: [Pie] {
-        var temp: [Pie] = [
-            Pie(id: 0, percent: CGFloat(foodCalc/total * 100), name: "Food", color: Color("Color2"), total: foodCalc),
-                Pie(id: 1, percent: CGFloat(personalCalc/total * 100), name: "Personal", color: Color("Color5"), total: personalCalc),
-                Pie(id: 2, percent: CGFloat(utilCalc/total * 100), name: "Utilities", color: Color("ColorBlue"), total: utilCalc),
-                Pie(id: 3, percent: CGFloat(otherCalc/total * 100), name: "Other", color: Color("ColorPurple"), total: otherCalc)
-            ]
-        return temp
+    func leftIsValid() -> Bool {
+        return  Monthdata.index > 0
+    }
+    func rightIsValid() -> Bool {
+        return Monthdata.index < Monthdata.months.count - 1
+    }
+    
+    let largeConfig = UIImage.SymbolConfiguration(pointSize: 140, weight: .bold, scale: .large)
+           
+    var leftArrowFill: UIImage {
+        return UIImage(systemName: "arrow.left.circle.fill", withConfiguration: largeConfig)!
+    }
+    
+    var leftArrow: UIImage {
+        return UIImage(systemName: "arrow.left.circle", withConfiguration: largeConfig)!
+    }
+    
+    var rightArrowFill: UIImage {
+        return UIImage(systemName: "arrow.right.circle.fill", withConfiguration: largeConfig)!
+    }
+    
+    var rightArrow: UIImage {
+        return UIImage(systemName: "arrow.right.circle", withConfiguration: largeConfig)!
     }
     
 
     var body: some View {
         VStack{
+            HStack{
+                
+                // left button
+                Button {
+                    if leftIsValid() {
+                        Monthdata.index -= 1
+                    }
+                } label: {
+                    Label("Back Month", systemImage: leftIsValid() ? "arrow.left.circle.fill" : "arrow.left.circle")
+                        .labelStyle(.iconOnly)
+                        .foregroundColor(leftIsValid() ? Color("Color2") : .gray)
+                        .padding()
+                        
+                }
+
+                Spacer()
+                
+
+                // right button
+
+                Button {
+                    if rightIsValid() {
+                        Monthdata.index += 1
+                    }
+                } label: {
+                    Label("Forward Month", systemImage: rightIsValid() ? "arrow.right.circle.fill" : "arrow.right.circle")
+                        .labelStyle(.iconOnly)
+                        .foregroundColor(rightIsValid() ? Color("Color2") : .gray)
+                        .padding()
+                }
+        } //end of month switch button
+            
             ZStack {
                 Text("My Budget Breakdown")
                     .fontWeight(.bold)
@@ -78,11 +81,11 @@ struct ChartView : View {
 //            .padding()
             .overlay(Rectangle().stroke(Color.black.opacity(0.05), lineWidth: 2))
             
-            if total > 0 { // If there are expenditures make the chart
+            if Monthdata.months[Monthdata.index].total > 0 { // If there are expenditures make the chart
                 GeometryReader{g in
                     ZStack{
-                        ForEach(0..<data.count){i in
-                            DrawShape(data: data, center: CGPoint(x: g.frame(in: .global).width / 2,
+                        ForEach(0..<Monthdata.months[Monthdata.index].data.count){i in
+                            DrawShape(data: Monthdata.months[Monthdata.index].data, center: CGPoint(x: g.frame(in: .global).width / 2,
                                                       y: g.frame(in: .global).height/2), index: i)
                         }
                         Circle()
@@ -90,11 +93,11 @@ struct ChartView : View {
                             .foregroundColor(Color.white)
                             .shadow(radius: 25)
 //                            .shadow(radius: 50)
-                        Text(String(format: "$ %.2f", total))
+                        Text(String(format: "$ %.2f", Monthdata.months[Monthdata.index].total))
                             .font(.headline)
                     }
                 }
-                .frame(height: 360)
+                .frame(height: 300)
                 .padding(.top, 20)
                 .clipShape(Circle())
             .shadow(radius: 20)
@@ -108,7 +111,7 @@ struct ChartView : View {
                         }
                     }
                 }
-                .frame(height: 360)
+                .frame(height: 300)
                 .padding(.top, 20)
                 .clipShape(Circle())
             .shadow(radius: 8)
@@ -117,8 +120,8 @@ struct ChartView : View {
             // Prints out the information below the chart
             // Name, total cost, percentage of monthly expenses
             VStack {
-                if total > 0 {
-                    ForEach(data){i in
+                if Monthdata.months[Monthdata.index].total > 0 {
+                    ForEach(Monthdata.months[Monthdata.index].data){i in
                         HStack{
                             
                             Text(i.name)

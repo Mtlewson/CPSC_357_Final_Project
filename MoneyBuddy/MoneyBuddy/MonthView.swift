@@ -12,8 +12,9 @@ struct MonthView: View {
 //    @StateObject var recipeStore : RecipeStore
     @EnvironmentObject var Monthdata: MonthData
     
+    
+    
     var body: some View {
-        VStack{
             
             NavigationView{
                 VStack{
@@ -21,31 +22,48 @@ struct MonthView: View {
                     Spacer()
 //                    Image(systemName: "house.fill") //this will be a chart
 
-                    ChartView(month: MonthData().months[0])//.environmentObject(MonthData())
+                    ChartView().environmentObject(Monthdata)
                     
                     Spacer()
                     
-                    Text("This is a button to add expenditure")
+                    NavigationLink {
+                        ExpenditureListView().environmentObject(Monthdata)
+                    } label: {
+                        HStack {
+                            Image(systemName: "list.bullet.rectangle")
+                                .resizable()
+                                .scaledToFit()
+                                .font(.title)
+                                .frame(width: 20, height: 20)
+                            Text("View Expenditures")
+                                .fontWeight(.semibold)
+                                .font(.headline)
+                        }
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(LinearGradient(gradient: Gradient(colors: [Color("ColorBlue"), Color("ColorGreen")]), startPoint: .leading, endPoint: .trailing))
+                        .cornerRadius(40)
+                        .padding(.horizontal, 20)
+
                     
                     // we want a button that goes to add expoeniture page
                         
                     
 
                     
-                }.navigationBarTitle(Text("January"))
-                    .navigationBarItems(leading: NavigationLink(destination: AddExpenditureView().environmentObject(Monthdata)){
+                    }.navigationBarTitle(Text(Monthdata.months[Monthdata.index].name))
+                        .navigationBarItems(leading: NavigationLink(destination: AddExpenditureView().environmentObject(Monthdata)){
                         
                         //expenditureList : month.Expenditures)
                         
                         //NavigationLink(destination: AddNewRecipe(recipeStore: self.recipeStore))
-                        Text("Add")
-                            .foregroundColor(.blue)
-                            .foregroundColor(.red)
+                        Text("Add Expenditure")
+                            .foregroundColor(Color("Color3"))
+                            
                     })
                 
             } // end of nav view
             
-        }
     }
 }
 
@@ -87,4 +105,5 @@ struct GradientBackgroundStyle: ButtonStyle {
             .padding(.horizontal, 20)
             .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
     }
+}
 }

@@ -23,14 +23,16 @@ struct ExpenditureView: View {
             }
             Spacer()
             Text(String(format: "-$%.2f", expenditure.cost))
-                .foregroundColor(Color.red)
+                .foregroundColor(Color("Color5"))
                 .padding()
         }
+        .padding(10)
+        .border(Color("Color2"))
     }
 }
 
 struct ExpenditureView_Previews: PreviewProvider {
     static var previews: some View {
-        ExpenditureView(expenditure: Expenditure(name: "Ralphs", type: "groceries", desc: "Eggs, Bread, Milk", cost: 35.00))
+        ExpenditureView(expenditure: Expenditure(name: "Ralphs", type: "food", desc: "Eggs, Bread, Milk", cost: 35.00))
     }
 }
