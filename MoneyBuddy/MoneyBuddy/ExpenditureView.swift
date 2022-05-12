@@ -1,10 +1,6 @@
-//
-//  ExpenditureView.swift
-//  MoneyBuddy
-//
-//  Created by Eli Annoni on 5/7/22.
-//
-
+// Expendtiure view
+// Contributors: Eli
+// Shows each expense with name, description, cost with image
 import SwiftUI
 
 struct ExpenditureView: View {

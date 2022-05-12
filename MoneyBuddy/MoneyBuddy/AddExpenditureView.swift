@@ -1,12 +1,9 @@
-//
-//  AddExpenditureView.swift
-//  MoneyBuddy
-//
-//  Created by Liam Propst on 5/3/22.
-//
 
 import SwiftUI
-
+// View for adding info for a new expenditure
+// Contributors: Michael created initial version
+// Eli extended it, cleaned up editing
+// Liam added color formatting and images, cleaned up formatting
 struct AddExpenditureView: View {
     
     @Environment(\.presentationMode) var presentationMode
@@ -15,7 +12,7 @@ struct AddExpenditureView: View {
     
     @EnvironmentObject var Monthdata : MonthData
     
-    
+    // Variables for expenditure info for new expenditure
     @State private var expenditureName: String = ""
     @State private var expenditureType: String = "food"
     @State private var expenditureDescription: String = ""
@@ -74,19 +71,6 @@ struct AddExpenditureView: View {
                 .border(Color("Color3"), width: 3)
                 
                 .padding()
-//                DataStringInput(title: "Name", userInput: $expenditureName)
-//
-//                VStack(alignment: HorizontalAlignment.leading) {
-//                    Text("Category")
-//                        .font(.headline)
-//                    Picker("", selection: $expenditureType){
-//                        ForEach(expenditureTypes, id: \.self){
-//                            Text($0)
-//                        } }.pickerStyle(SegmentedPickerStyle())
-//                }.padding()
-//
-//                DataStringInput(title: "Description", userInput: $expenditureDescription)
-//                DataStringInput(title: "Cost", userInput: $expenditureCost)
             
             Button( action: {
                 CreateNewExpenditure()
@@ -118,6 +102,7 @@ struct AddExpenditureView: View {
         }
         
     }
+    // Function to create new expenditure from information in window
     func CreateNewExpenditure(){
         if let floatCost = Float(expenditureCost){
             let newExpenditure = Expenditure(
@@ -131,9 +116,6 @@ struct AddExpenditureView: View {
         expenditureName = ""
         expenditureDescription = ""
         expenditureCost = "0.0"
-//            recipeStore.recipes.append(newRecipe)
-            //TO DO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            // Add new expenditure to CURRENT month
 
         }
         else{
@@ -160,20 +142,6 @@ struct DataStringInput: View {
         }
 }
 
-// Structure for adding the data
-//struct DataFloatInput: View {
-//    var title: Float
-//    @Binding var userInput: Float
-//
-//    var body: some View {
-//        VStack(alignment: HorizontalAlignment.leading) {
-//            Text(title)
-//                .font(.headline)
-//            TextField("Enter \(title)", text: $userInput).textFieldStyle(RoundedBorderTextFieldStyle())
-//            }
-//            .padding()
-//        }
-//}
 
 struct AddExpenditureView_Previews: PreviewProvider {
     static var previews: some View {

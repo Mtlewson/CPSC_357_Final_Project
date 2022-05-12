@@ -1,27 +1,15 @@
-//
-//  MonthView.swift
-//  MoneyBuddy
-//
-//  Created by Liam Propst on 5/3/22.
-//
-
+// Month view for each month ex: January 2022
+// Shows pi chart and data metrics from ChartView
+// Contributors: Liam
 import SwiftUI
 
 struct MonthView: View {
-//    @StateObject private var recipeStore : RecipeStore = RecipeStore(recipes : recipeData)
-//    @StateObject var recipeStore : RecipeStore
     @EnvironmentObject var Monthdata: MonthData
-    
-    
-    
+
     var body: some View {
-            
             NavigationView{
                 VStack{
-                    
                     Spacer()
-//                    Image(systemName: "house.fill") //this will be a chart
-
                     ChartView().environmentObject(Monthdata)
                     
                     Spacer()
@@ -44,26 +32,13 @@ struct MonthView: View {
                         .background(LinearGradient(gradient: Gradient(colors: [Color("ColorBlue"), Color("ColorGreen")]), startPoint: .leading, endPoint: .trailing))
                         .cornerRadius(40)
                         .padding(.horizontal, 20)
-
-                    
-                    // we want a button that goes to add expoeniture page
-                        
-                    
-
-                    
+                        // button to go to addExpenditureView
                     }.navigationBarTitle(Text(Monthdata.months[Monthdata.index].name))
                         .navigationBarItems(leading: NavigationLink(destination: AddExpenditureView().environmentObject(Monthdata)){
-                        
-                        //expenditureList : month.Expenditures)
-                        
-                        //NavigationLink(destination: AddNewRecipe(recipeStore: self.recipeStore))
                         Text("Add Expenditure")
                             .foregroundColor(Color("Color3"))
-                            
                     })
-                
             } // end of nav view
-            
     }
 }
 
@@ -92,7 +67,7 @@ struct AddButton: View {
     }
 }
                         
-                        
+// Struct for gradient
 struct GradientBackgroundStyle: ButtonStyle {
  
     func makeBody(configuration: Self.Configuration) -> some View {

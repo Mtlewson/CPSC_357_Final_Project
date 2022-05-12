@@ -1,13 +1,9 @@
-//
-//  ModelData.swift
-//  MoneyBuddy
-//
-//  Created by Liam Propst on 5/3/22.
-//
-
 import Foundation
 import SwiftUI
 
+// structure definitions for Expenditure, Month, Pie chart
+// Class definition for MonthData
+// Contributors: Eli, Liam, Michael
 struct Expenditure: Identifiable, Hashable{
     var id: Int
     var name: String
@@ -73,9 +69,9 @@ struct Month{
         }
         return total
     }
-    
+    // data for pi chart
     var data: [Pie] {
-        var temp: [Pie] = [
+        let temp: [Pie] = [
             Pie(id: 0, percent: CGFloat(foodCalc/total * 100), name: "Food", color: Color("Color2"), total: foodCalc),
                 Pie(id: 1, percent: CGFloat(personalCalc/total * 100), name: "Personal", color: Color("Color5"), total: personalCalc),
                 Pie(id: 2, percent: CGFloat(utilCalc/total * 100), name: "Utilities", color: Color("ColorBlue"), total: utilCalc),
@@ -92,7 +88,7 @@ struct Month{
     }
 }
 
-
+// struct for pi chart
 struct Pie : Identifiable {
     
     var id : Int
@@ -102,7 +98,7 @@ struct Pie : Identifiable {
     var total : Float
 }
 
-
+// Demo data
 class MonthData: ObservableObject {
  @Published var months: [Month] = [Month(name: "January 2022",
                                          expenditures: [Expenditure(name: "Coffee", type: "food", desc: "Starbucks", cost: 4.00),
@@ -122,7 +118,17 @@ class MonthData: ObservableObject {
                                                        
                                                        ]),
                                    Month(name: "February 2022",
-                                         expenditures: [Expenditure(name: "Bread", type: "food", desc: "bread descrip", cost: 124.00)])
+                                         expenditures: [
+                                            Expenditure(name: "Burger", type: "food", desc: "iHop yum", cost: 11.50),
+                                            Expenditure(name: "Gas Bill", type: "utilities", desc: "house utilities", cost: 40.00),
+                                            Expenditure(name: "Phone", type: "personal", desc: "phone bill", cost: 30.00),
+                                            Expenditure(name: "Textbooks", type: "other", desc: "movies", cost: 80.00),
+                                            Expenditure(name: "Boba Tea", type: "food", desc: "green tea", cost: 10.00)
+                                         
+                                         
+                                         
+                                         
+                                         ])
                     ]
    @Published var index: Int = 1
 }

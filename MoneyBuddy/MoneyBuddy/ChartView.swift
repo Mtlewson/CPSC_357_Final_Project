@@ -1,5 +1,9 @@
+// Chart view: Shows the pi chart and the expenditure data
+// Pi chart and expenditure data made by Michael
+// Buttons and transitions made by Liam
 import SwiftUI
 
+// Chart view: Shows the pi chart and the expenditure data
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
         ChartView().environmentObject(MonthData())
@@ -72,15 +76,13 @@ struct ChartView : View {
                         .padding()
                 }
         } //end of month switch button
-            
+            // Text on bottom half of screen including bar representative of size of each breakdown + color
             ZStack {
                 Text("My Budget Breakdown")
                     .fontWeight(.bold)
             }
-//            .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
-//            .padding()
             .overlay(Rectangle().stroke(Color.black.opacity(0.05), lineWidth: 2))
-            
+            // makes chart
             if Monthdata.months[Monthdata.index].total > 0 { // If there are expenditures make the chart
                 GeometryReader{g in
                     ZStack{
@@ -92,9 +94,10 @@ struct ChartView : View {
                             .frame(width:150, height: 150)
                             .foregroundColor(Color.white)
                             .shadow(radius: 25)
-//                            .shadow(radius: 50)
+                            .padding(.bottom, 16)
                         Text(String(format: "$ %.2f", Monthdata.months[Monthdata.index].total))
                             .font(.headline)
+                            .padding(.bottom, 16)
                     }
                 }
                 .frame(height: 300)

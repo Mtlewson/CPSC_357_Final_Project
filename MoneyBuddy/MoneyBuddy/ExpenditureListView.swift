@@ -1,10 +1,5 @@
-//
-//  ExpenditureListView.swift
-//  MoneyBuddy
-//
-//  Created by Eli Annoni on 5/7/22.
-//
-
+// List view of all expenditures of each month
+// Created by Eli and Liam
 import SwiftUI
 
 struct ExpenditureListView: View {
@@ -39,11 +34,6 @@ struct ExpenditureListView: View {
                         .foregroundColor(Color("Color3"))
                     }
                 }
-//        VStack {
-//            ForEach (Monthdata.months[0].expenditures) { expenditure in
-//                ExpenditureView(expenditure: expenditure)
-//            }
-//        }
     }
 }
 
