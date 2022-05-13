@@ -24,4 +24,4 @@ Michael:
 
 
 Initial Wireframe:
-https://files.slack.com/files-pri/T01J0G4GBV5-F03EMLNVDQQ/image_from_ios.jpg![image](https://user-images.githubusercontent.com/78451053/168184476-74ea2870-32e1-499a-bf7e-396a7d7fe98b.png)
+https://github.com/Mtlewson/CPSC_357_Final_Project/blob/main/Wireframes/InitialWireframe.jpg
