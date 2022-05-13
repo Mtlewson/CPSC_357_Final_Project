@@ -1,10 +1,7 @@
 //
-//  TitleScreenView.swift
-//  MoneyBuddy
-//
-//  Created by Michael Lewson on 5/12/22.
-//
 
+//TitleScreen
+// Creator: Michael
 import SwiftUI
 
 struct TitleScreenView: View {
@@ -28,44 +25,20 @@ struct TitleScreenView: View {
                     .scaledToFit()
                     .frame(width: 100, height: 100)
             }
-            ZStack{
-//                Button(action: TurnOffTitle){
-//                    Text("View Expenditures")
-//                        .fontWeight(.semibold)
-//                        .font(.headline)
-//                        .frame(width: 300, height: 300)
-//                        .clipShape(Circle())
-//                    .padding()
-//                    .foregroundColor(.white)
-//                    .background(LinearGradient(gradient: Gradient(colors: [Color("ColorBlue"), Color("ColorGreen")]), startPoint: .leading, endPoint: .trailing))
-//                    .cornerRadius(200)
-//                }
-                Button(action: TurnOffTitle){
-                    Text("")
-                        .fontWeight(.semibold)
-                        .font(.headline)
-                        .frame(width: 200, height: 200)
-                        .clipShape(Circle())
-                    .padding()
-                    .foregroundColor(.black)
-                    .background(LinearGradient(gradient: Gradient(colors: [Color("ColorBlue"), Color("ColorGreen")]), startPoint: .leading, endPoint: .trailing))
-                    .cornerRadius(200)
 
-                }
-                
-                Button(action: TurnOffTitle){
-                    Text("View Expenditures")
-                        .fontWeight(.semibold)
-                        .font(.headline)
-                        .frame(width: 130, height: 130)
-                        .clipShape(Circle())
-                    .padding()
-                    .foregroundColor(.black)
-                    .background(Color.white)
-                    .cornerRadius(200)
-                }
-                
+            Button(action: TurnOffTitle){
+                Text("View Expenditures")
+                    .fontWeight(.semibold)
+                    .font(.title)
+                    .frame(width: 200, height: 200)
+                    .clipShape(Circle())
+                .padding()
+                .foregroundColor(.white)
+                .background(LinearGradient(gradient: Gradient(colors: [Color("ColorBlue"), Color("ColorGreen")]), startPoint: .leading, endPoint: .trailing))
+                .cornerRadius(200)
+
             }
+
             
             HStack{
                 Image("utilities")
