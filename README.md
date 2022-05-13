@@ -19,6 +19,7 @@ Liam:
 
 Michael: 
  Created ChartView, Pi chart and expenditure data 
+ Created TitleView
  AddExpenditureView, View to add info for each new expenditure
  General polish
 
